@@ -1,7 +1,6 @@
 ---
 - name: Deploy Apache Server
   hosts: servers
-#  become: yes
   tasks:
   - name: install httpd
     ansible.builtin.dnf:
