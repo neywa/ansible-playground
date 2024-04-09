@@ -18,5 +18,5 @@
     - name: Copy index.html file
       become: true
       ansible.builtin.copy:
-        source: index.html
-        dest: /war/www/html/index.html
+        src: index.html
+        dest: /var/www/html/index.html
