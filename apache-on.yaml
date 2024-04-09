@@ -3,8 +3,20 @@
   hosts: servers
 
   tasks:
-  - name: Install httpd
-    become: true
-    ansible.builtin.dnf:
-      name: httpd
-      state: present
+    - name: Install httpd
+      become: true
+      ansible.builtin.dnf:
+        name: httpd
+        state: present
+
+    - name: Start httpd service
+      become: true
+      ansible.builtin.service:
+        name: httpd
+        state: started
+
+    - name: Copy index.html file
+      become: true
+      ansible.builtin.copy:
+        source: index.html
+        dest: /war/www/html/index.html
