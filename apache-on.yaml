@@ -2,8 +2,8 @@
 - name: Deploy Apache Server
   hosts: servers
   tasks:
-  - name: install httpd
+  - name: Install httpd
     ansible.builtin.dnf:
       name: httpd
-      state: latest
+      state: present
     become: true
