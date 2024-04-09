@@ -1,0 +1,10 @@
+---
+- name: Remove Apache Server
+  hosts: servers
+#  become: yes
+  tasks:
+  - name: uninstall httpd
+    ansible.builtin.dnf:
+      name: httpd
+      state: absent
+    become: true
