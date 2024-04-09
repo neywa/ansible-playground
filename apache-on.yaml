@@ -1,9 +1,10 @@
 ---
 - name: Deploy Apache Server
   hosts: servers
+
   tasks:
   - name: Install httpd
+    become: true
     ansible.builtin.dnf:
       name: httpd
       state: present
-    become: true
