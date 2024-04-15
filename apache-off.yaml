@@ -1,9 +1,22 @@
 ---
 - name: Remove Apache Server
   hosts: servers
+  become: true
+
   tasks:
-  - name: uninstall httpd
+  - name: Uninstall httpd
     ansible.builtin.dnf:
       name: httpd
       state: absent
-    become: true
+
+  - name: Remove index file
+    ansible.builtin.file:
+      path: /var/www/html/index.html
+      state: absent
+
+  - name: Remove http service from firewall
+    ansible.posix.firewalld:
+      service: http
+      permanent: false
+      state: disabled
+      immediate: true
